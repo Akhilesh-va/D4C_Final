@@ -1,5 +1,6 @@
 package com.example.d4cfinalassignment.presentation.screens.shopPageScreen
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,11 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
+
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,7 +31,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 
 import com.example.d4cfinalassignment.R
-import com.example.d4cfinalassignment.data.models.productModels.Product
+
 import com.example.d4cfinalassignment.presentation.screens.shopPageScreen.comp.Bars
 import com.example.d4cfinalassignment.presentation.screens.shopPageScreen.comp.Categories.Categories
 import com.example.d4cfinalassignment.presentation.screens.shopPageScreen.comp.HeroProduct.ProductItem
@@ -37,14 +39,27 @@ import com.example.d4cfinalassignment.presentation.screens.shopPageScreen.comp.N
 import com.example.d4cfinalassignment.presentation.screens.shopPageScreen.comp.ShopPageTopBar
 import com.example.d4cfinalassignment.presentation.ui.theme.StandardFont
 import com.example.d4cfinalassignment.utils.NetworkResult
+import androidx.compose.runtime.getValue
 import com.example.d4cfinalassignment.viewmodels.ProductViewmodel
+import androidx.compose.foundation.lazy.items
+
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
+
+import androidx.compose.runtime.collectAsState
+import androidx.navigation.NavController
 
 @Composable
 fun ShopPageScreen(
+    navController: NavController,
     viewmodel: ProductViewmodel = hiltViewModel()
 
 ) {
-    val productResult = viewmodel.productResultView.collectAsState()
+    val productResult by viewmodel.productResultView.collectAsState()
+    LaunchedEffect(Unit) {
+        viewmodel.fetchProducts()
+    }
     val categoryList = listOf(
         "Cleaners" to R.drawable.product_image,
         "Groceries" to R.drawable.categorysample,
@@ -127,15 +142,16 @@ fun ShopPageScreen(
         }
 
 
+        item {
+            Button(onClick = {
+                navController.navigate("ticket_screen")
 
-    }
+
+            }) {
+                Text("Raise Ticket")
+            }
+        }
 
 
-}
+    }}
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-private fun ShopPageScreenPreview() {
-    ShopPageScreen()
-
-}

@@ -19,6 +19,7 @@ import com.example.d4cfinalassignment.viewmodels.AuthViewModel
 import com.example.d4cfinalassignment.viewmodels.VerifyOtpViewmodel
 import com.example.d4cfinalassignment.presentation.screens.LoginScreen
 import com.example.d4cfinalassignment.presentation.screens.OtpVerificationScreen
+import com.example.d4cfinalassignment.presentation.screens.TicketScreen
 import com.example.d4cfinalassignment.presentation.screens.shopPageScreen.ShopPageScreen
 import com.example.d4cfinalassignment.presentation.screens.trial
 import com.example.d4cfinalassignment.presentation.ui.theme.D4CFinalAssignmentTheme
@@ -45,7 +46,11 @@ class MainActivity : ComponentActivity() {
                     OtpVerificationScreen(verifyOtpViewmodel , productViewmodel,navController ,  countryCode!! , phoneNumber!!)
                 }
                 composable("shop_page_screen") {
-                    ShopPageScreen()
+                    ShopPageScreen(navController)
+                }
+                composable("ticket_screen") {
+                    TicketScreen()
+
                 }
             })
         }

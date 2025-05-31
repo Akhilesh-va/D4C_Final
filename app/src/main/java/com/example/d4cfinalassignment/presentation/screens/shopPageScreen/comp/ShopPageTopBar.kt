@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,12 +21,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.d4cfinalassignment.R
-
+import androidx.compose.runtime.getValue
 import com.example.d4cfinalassignment.presentation.ui.theme.ScreenHeading
+import com.example.d4cfinalassignment.viewmodels.ProductViewmodel
 
 @Composable
 fun ShopPageTopBar() {
+
     Row(
         modifier = Modifier.fillMaxWidth().padding(top = 36.dp, start = 16.dp, end = 16.dp) ,
         verticalAlignment = Alignment.CenterVertically,
