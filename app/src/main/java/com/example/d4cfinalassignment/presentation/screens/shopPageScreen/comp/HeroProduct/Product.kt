@@ -201,7 +201,7 @@ fun ProductItem(product: ProductData) {
                     Text(
                         product.subTitle?:"",
                         fontFamily = StandardFont,
-                        color = Color.White, fontSize = 16.sp,
+                        color = Color.White, fontSize = 14.sp,
                         lineHeight = 16.sp
                     )
                     Spacer(modifier = Modifier.height(8.dp))
@@ -213,7 +213,7 @@ fun ProductItem(product: ProductData) {
                             product.subTitle2?:"",
                             fontFamily = StandardFont,
                             color = Color.White,
-                            fontSize = 16.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             lineHeight = 16.sp
                         )
