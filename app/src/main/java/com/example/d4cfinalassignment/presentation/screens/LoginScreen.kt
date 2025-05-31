@@ -1,5 +1,6 @@
 package com.example.d4cfinalassignment.presentation.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -27,12 +29,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.d4cfinalassignment.R
 import com.example.d4cfinalassignment.viewmodels.AuthViewModel
 import com.example.d4cfinalassignment.data.models.sendOtpModels.OtpRequest
 import com.example.d4cfinalassignment.utils.NetworkResult
@@ -55,6 +59,7 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
 
     Column(
         modifier = Modifier
+            .background(Color.Black)
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
@@ -63,7 +68,8 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
         Text(
             text = "Welcome Back User",
             fontSize = 36.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color =colorResource(R.color.d4cgreen)
         )
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -72,9 +78,17 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
             OutlinedTextField(
                 value = countryCode,
                 onValueChange = { countryCode = it },
-                label = { Text("Code") },
-                placeholder = { Text("91") },
-                modifier = Modifier.weight(0.2f)
+                label = { Text("Code" ,color =colorResource(R.color.d4cgreen)) },
+                placeholder = { Text("CC" ,color =colorResource(R.color.d4cgreen)) },
+                modifier = Modifier.weight(0.2f),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color.White,
+                    unfocusedBorderColor = Color.White,
+                    focusedTextColor = colorResource(R.color.d4cgreen),
+                    unfocusedTextColor = colorResource(R.color.d4cgreen),
+                    cursorColor =  colorResource(R.color.d4cgreen)
+
+                )
             )
 
             Spacer(modifier = Modifier.width(4.dp))
@@ -82,21 +96,30 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
             OutlinedTextField(
                 value = phoneNumber,
                 onValueChange = { phoneNumber = it },
-                label = { Text("Phone Number") },
-                placeholder = { Text("XXXXXXXXXX") },
+                label = { Text("Phone Number",color =colorResource(R.color.d4cgreen)) },
+                placeholder = { Text("XXXXXXXXXX" ,color =colorResource(R.color.d4cgreen)) },
                 modifier = Modifier.weight(0.8f),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color.White,
+                    unfocusedBorderColor = Color.White,
+                    focusedTextColor = colorResource(R.color.d4cgreen),
+                    unfocusedTextColor = colorResource(R.color.d4cgreen),
+                    cursorColor =  colorResource(R.color.d4cgreen)
+
+                )
             )
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
         if (otpResult is NetworkResult.Loading) {
-            CircularProgressIndicator()
+            CircularProgressIndicator(color = colorResource(R.color.d4cgreen))
         } else {
-            Button(onClick = {
+            Button( onClick = {
                 authViewModel.loginUser(OtpRequest(phoneNumber, countryCode))
-            }) {
+            },
+                colors = ButtonDefaults.buttonColors(containerColor = Color.DarkGray , contentColor = colorResource(R.color.d4cgreen))) {
                 Text("Send OTP", fontSize = 18.sp)
             }
         }

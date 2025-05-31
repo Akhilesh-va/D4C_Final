@@ -20,8 +20,9 @@ import com.example.d4cfinalassignment.viewmodels.VerifyOtpViewmodel
 import com.example.d4cfinalassignment.presentation.screens.LoginScreen
 import com.example.d4cfinalassignment.presentation.screens.OtpVerificationScreen
 import com.example.d4cfinalassignment.presentation.screens.TicketScreen
+import com.example.d4cfinalassignment.presentation.screens.productListScreen.ProductListScreen
 import com.example.d4cfinalassignment.presentation.screens.shopPageScreen.ShopPageScreen
-import com.example.d4cfinalassignment.presentation.screens.trial
+
 import com.example.d4cfinalassignment.presentation.ui.theme.D4CFinalAssignmentTheme
 import com.example.d4cfinalassignment.viewmodels.ProductViewmodel
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +47,8 @@ class MainActivity : ComponentActivity() {
                     OtpVerificationScreen(verifyOtpViewmodel , productViewmodel,navController ,  countryCode!! , phoneNumber!!)
                 }
                 composable("shop_page_screen") {
-                    ShopPageScreen(navController)
+              ShopPageScreen(navController,productViewmodel)
+//                    ProductListScreen(productViewmodel)
                 }
                 composable("ticket_screen") {
                     TicketScreen()

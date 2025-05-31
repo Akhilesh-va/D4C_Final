@@ -1,6 +1,7 @@
 package com.example.d4cfinalassignment.presentation.screens
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -27,11 +29,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.d4cfinalassignment.R
 import com.example.d4cfinalassignment.viewmodels.VerifyOtpViewmodel
 import com.example.d4cfinalassignment.data.models.sendOtpModels.OtpRequest
 import com.example.d4cfinalassignment.data.models.verifyOtpModels.VerifyOtpRequest
@@ -75,20 +79,22 @@ fun OtpVerificationScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
+            .background(Color.Black)
             .fillMaxSize()
             .padding(32.dp)
     ) {
         Text(
             text = "User details",
-            fontSize = 36.sp, fontWeight = FontWeight.Bold
+            fontSize = 36.sp, fontWeight = FontWeight.Bold ,
+            color = colorResource(R.color.d4cgreen)
         )
 
         Row() {
-            Text("+")
-            Text(countryCode)
+            Text("+",color = colorResource(R.color.d4cgreen))
+            Text(countryCode, color = colorResource(R.color.d4cgreen))
             Spacer(modifier = Modifier.width(2.dp))
             Spacer(modifier = Modifier.width(2.dp))
-            Text(phoneNumber)
+            Text(phoneNumber,color = colorResource(R.color.d4cgreen))
 
 
         }
@@ -100,26 +106,30 @@ fun OtpVerificationScreen(
                 otpValue = it
 
             },
-            label = { Text("Enter OTP") },
-            placeholder = { Text("123456") },
+            label = { Text("Enter OTP" ,color = colorResource(R.color.d4cgreen)) },
+            placeholder = { Text("123456",color = colorResource(R.color.d4cgreen)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
             colors = OutlinedTextFieldDefaults.colors(
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black
-            ),
+                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.White,
+                focusedTextColor = colorResource(R.color.d4cgreen),
+                unfocusedTextColor = colorResource(R.color.d4cgreen),
+                cursorColor =  colorResource(R.color.d4cgreen)
+
+            )
         )
         Spacer(modifier = Modifier.height(24.dp))
         if (verifyOtpResult is NetworkResult.Loading) {
-            CircularProgressIndicator()
+            CircularProgressIndicator(color = colorResource(R.color.d4cgreen))
         } else {
             Button(onClick = {
                 productViewmodel.fetchProducts()
                verifyOtpViewmodel.verifyOtp(VerifyOtpRequest(phoneNumber, countryCode,otpValue))
                 otpValue=""
 
-            }) {
+            }, colors = ButtonDefaults.buttonColors(containerColor = Color.DarkGray , contentColor = colorResource(R.color.d4cgreen))) {
                 Text("Verify OTP", fontSize = 18.sp)
             }
         }

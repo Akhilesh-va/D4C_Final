@@ -107,8 +107,8 @@ fun ProductItem(product: ProductData) {
                     model = primaryImageUrl ?: R.drawable.product_image,
                     contentDescription = product.title,
                     modifier = Modifier
-                        .size(900.dp)
-                        .offset(y = -70.dp),
+                        .size(280.dp)
+                        .offset(x=50.dp,y = 65.dp),
                     contentScale = ContentScale.Crop
                 )
                 Image(
