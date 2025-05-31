@@ -107,7 +107,7 @@ fun OtpVerificationScreen(
 
             },
             label = { Text("Enter OTP" ,color = colorResource(R.color.d4cgreen)) },
-            placeholder = { Text("123456",color = colorResource(R.color.d4cgreen)) },
+            placeholder = { Text("XXXXXX",color = colorResource(R.color.d4cgreen)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,

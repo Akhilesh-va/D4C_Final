@@ -201,9 +201,10 @@ fun ProductItem(product: ProductData) {
                     Text(
                         product.subTitle?:"",
                         fontFamily = StandardFont,
-                        color = Color.White, fontSize = 16.sp
+                        color = Color.White, fontSize = 16.sp,
+                        lineHeight = 16.sp
                     )
-                    Spacer(modifier = Modifier.height(2.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
@@ -213,9 +214,10 @@ fun ProductItem(product: ProductData) {
                             fontFamily = StandardFont,
                             color = Color.White,
                             fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            lineHeight = 16.sp
                         )
-                        Spacer(modifier = Modifier.width(4.dp))
+                        Spacer(modifier = Modifier.height(6.dp))
                         Box(
                             modifier = Modifier
                                 .size(8.dp)
@@ -225,7 +227,7 @@ fun ProductItem(product: ProductData) {
                         Spacer(modifier = Modifier.width(4.dp))
 
                     }
-                    Spacer(modifier = Modifier.height(2.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -245,7 +247,7 @@ fun ProductItem(product: ProductData) {
                         )
 
                     }
-                    Spacer(modifier = Modifier.height(2.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
@@ -259,7 +261,7 @@ fun ProductItem(product: ProductData) {
                                     .padding(start = 2.dp)
                             )
                         }
-                        Spacer(modifier = Modifier.width(6.dp))
+                        Spacer(modifier = Modifier.height(6.dp))
                         Text(text = product.reviewsCount.toString() , color = Color.White ,
                             fontFamily = StandardFont,
                             textDecoration = TextDecoration.Underline ,)
