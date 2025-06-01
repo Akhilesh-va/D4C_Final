@@ -4,6 +4,7 @@ import android.net.Uri
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -35,6 +36,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -72,15 +74,21 @@ fun TicketScreen(ticketViewModel: TicketViewModel = hiltViewModel()) {
     }
     Column(
         horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         modifier = Modifier
             .background(Color.Black)
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(horizontal = 16.dp , vertical = 40.dp)
     ) {
+        Image(
+            painterResource(R.drawable.suplogo),
+            "",
+            modifier = Modifier.size(100.dp)
+
+        )
         Text(text = "Raise Ticket" ,color = colorResource(R.color.d4cgreen), fontWeight = FontWeight.Bold,
-            fontSize = 36.sp)
-        Spacer(modifier = Modifier.height(68.dp))
+            fontSize = 26.sp)
+        Spacer(modifier = Modifier.height(48.dp))
         imageUri.value?.let { uri ->
             AsyncImage(
                 model = uri,

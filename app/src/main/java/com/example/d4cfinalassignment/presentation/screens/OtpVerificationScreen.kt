@@ -1,6 +1,7 @@
 package com.example.d4cfinalassignment.presentation.screens
 
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -30,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -76,13 +79,19 @@ fun OtpVerificationScreen(
  }
 
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
             .background(Color.Black)
             .fillMaxSize()
-            .padding(32.dp)
+            .padding(horizontal = 16.dp , vertical = 100.dp)
     ) {
+        Image(
+            painterResource(R.drawable.suplogo),
+            "",
+            modifier = Modifier.size(220.dp)
+
+        )
         Text(
             text = "User details",
             fontSize = 36.sp, fontWeight = FontWeight.Bold ,

@@ -108,7 +108,7 @@ fun ProductItem(product: ProductData) {
                     contentDescription = product.title,
                     modifier = Modifier
                         .size(280.dp)
-                        .offset(x=50.dp,y = 65.dp),
+                        .offset(x=58.dp,y = 65.dp),
                     contentScale = ContentScale.Crop
                 )
                 Image(
