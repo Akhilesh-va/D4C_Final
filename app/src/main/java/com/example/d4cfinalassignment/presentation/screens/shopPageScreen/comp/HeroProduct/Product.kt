@@ -204,7 +204,7 @@ fun ProductItem(product: ProductData) {
                         color = Color.White, fontSize = 14.sp,
                         lineHeight = 16.sp
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
